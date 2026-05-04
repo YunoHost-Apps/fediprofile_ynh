@@ -24,7 +24,7 @@ esac
 wget https://packages.microsoft.com/config/debian/$debian_version/packages-microsoft-prod.deb -O packages-microsoft-prod.deb 2>&1
 dpkg -i packages-microsoft-prod.deb
 rm packages-microsoft-prod.deb
-apt-install -y dotnet-sdk-9.0
+apt-install -y dotnet-sdk-10.0
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
