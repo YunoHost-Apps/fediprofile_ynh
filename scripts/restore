@@ -22,11 +22,10 @@ case "$yunohost_major_version" in
 esac
 
 #Add Microsoft package signing key
-wget https://packages.microsoft.com/config/debian/$yunohost_major_version/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-sudo dpkg -i packages-microsoft-prod.deb
+wget https://packages.microsoft.com/config/debian/$yunohost_major_version/packages-microsoft-prod.deb -O packages-microsoft-prod.deb 2>&1
+dpkg -i packages-microsoft-prod.deb
 rm packages-microsoft-prod.deb
-sudo apt-get update && \
-  sudo apt-get install -y dotnet-sdk-10.0
+ynh_install_app_dependencies dotnet-sdk-9.0
 
 #=================================================
 # RESTORE THE APP MAIN DIR
