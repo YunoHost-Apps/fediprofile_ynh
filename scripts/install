@@ -32,7 +32,10 @@ sudo apt-get update && \
 #=================================================
 ynh_script_progression "Setting up source files..."
 
-ynh_setup_source --dest_dir="$install_dir/sources"
+ynh_setup_source --dest_dir="$install_dir"
+pushd "$install_dir/fediprofile/src/FediProfile"
+    dotnet run
+popd
 
 #=================================================
 # SYSTEM CONFIGURATION
