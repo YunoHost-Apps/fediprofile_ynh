@@ -7,7 +7,7 @@ name = "FediProfile"
 description.en = "The open-source, federated alternative to Linktree."
 description.fr = "L'alternative open source et fédérée à Linktree."
 
-version = "0.0.2~ynh1"
+version = "0.0.2~ynh2"
 
 maintainers = ["grossermensch"]
 
@@ -20,7 +20,7 @@ admindoc = "https://github.com/tryvocalcat/fediprofile/blob/main/README.md"
 yunohost = ">= 12.1.17"
 helpers_version = "2.1"
 # FIXME: can be replaced by a list of supported archs using the dpkg --print-architecture nomenclature (amd64/i386/armhf/arm64), for example: ["amd64", "i386"]
-architectures = ["amd64", "arm64"]
+architectures = ["x64", "arm64"]
 multi_instance = false
 
 ldap = false
@@ -52,12 +52,6 @@ ram.runtime = "150M"
     autoupdate.strategy = "latest_github_tag"
     autoupdate.asset = "tarball"
     autoupdate.needs_manual_tweaks = true
-
-    [resources.sources.dotnet]
-    amd64.url = "https://builds.dotnet.microsoft.com/dotnet/aspnetcore/Runtime/9.0.11/aspnetcore-runtime-9.0.11-linux-x64.tar.gz"
-    amd64.sha256 = "9c72253df8cbdbc775c76d6dcefc057aabb0bf7c978e5c3f24ab0afed839fd1f"
-    arm64.url = "https://builds.dotnet.microsoft.com/dotnet/aspnetcore/Runtime/9.0.11/aspnetcore-runtime-9.0.11-linux-arm64.tar.gz"
-    arm64.sha256 = "d039cbb3ef822aad0226857c1d89763c9c2a4bf339015bb11c99a7f6e62d3062"
 
     [resources.system_user]
 
