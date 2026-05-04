@@ -25,6 +25,8 @@ ynh_safe_rm "/etc/cron.d/$app"
 
 ynh_safe_rm "/etc/$app"
 
+ynh_remove_app_dependencies
+
 #=================================================
 # END OF SCRIPT
 #=================================================
