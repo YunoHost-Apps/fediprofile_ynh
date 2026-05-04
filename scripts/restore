@@ -9,6 +9,26 @@ source ../settings/scripts/_common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
+# RESTORE DOTNET via apt
+#=================================================
+ynh_script_progression "Restoring dotnet SDK via apt..."
+# Get YunoHost version
+yunohost_major_version=$(yunohost --version | cut -d. -f1)
+# Map YunoHost version to Debian version
+case "$yunohost_major_version" in
+    11) debian_version=12 ;;
+    12) debian_version=13 ;;
+    *) debian_version=12 ;; # Default to Debian 12
+esac
+
+#Add Microsoft package signing key
+wget https://packages.microsoft.com/config/debian/$yunohost_major_version/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+rm packages-microsoft-prod.deb
+sudo apt-get update && \
+  sudo apt-get install -y dotnet-sdk-10.0
+
+#=================================================
 # RESTORE THE APP MAIN DIR
 #=================================================
 ynh_script_progression "Restoring the app main directory..."
