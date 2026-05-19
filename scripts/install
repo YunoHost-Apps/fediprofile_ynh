@@ -10,10 +10,10 @@ source /usr/share/yunohost/helpers
 #=================================================
 # INSTALL DOTNET via script
 #=================================================
-ynh_script_progression "Installing dotnet SDK via apt..."
-ynh_setup_source --dest_dir="$install_dir/dotnet" --source_id="dotnet" --full_replace
-pushd "$install_dir/dotnet"
-    chmod +x ./dotnet-install.sh
+ynh_script_progression "Installing dotnet SDK via bash script..."
+ynh_setup_source --dest_dir="$install_dir" --source_id="dotnet"
+pushd "$install_dir"
+    chmod +x dotnet-install.sh
     ./dotnet-install.sh --channel 9.0
 popd
 
