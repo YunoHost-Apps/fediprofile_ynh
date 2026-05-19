@@ -15,23 +15,14 @@ ynh_script_progression "Stopping $app's systemd service..."
 ynh_systemctl --service="$app" --action="stop"
 
 #=================================================
-# ENSURE DOWNWARD COMPATIBILITY
-#=================================================
-ynh_script_progression "Ensuring downward compatibility..."
-
-if [ ! -d "$install_dir/dotnet" ]; then
-    # We expect legacy install in /opt
-    ynh_safe_rm "/opt/dotnet"
-    ynh_safe_rm "/usr/bin/dotnet"
-fi
-
-#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression "Upgrading source files..."
 
-ynh_setup_source --dest_dir="$install_dir/sources --full_replace
-ynh_setup_source --source_id="dotnet" --dest_dir="$install_dir/dotnet" --full_replace
+ynh_setup_source --dest_dir="$install_dir"
+pushd "$install_dir/fediprofile/src/FediProfile"
+    dotnet run
+popd
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATION

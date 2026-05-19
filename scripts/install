@@ -8,15 +8,25 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
+# INSTALL DOTNET via script
+#=================================================
+ynh_script_progression "Installing dotnet SDK via bash script..."
+ynh_setup_source --dest_dir="$install_dir/dotnet" --source_id="dotnet"
+pushd "$install_dir/dotnet"
+    ls
+    chmod +x dotnet-install.sh
+    ./dotnet-install.sh --channel 9.0
+popd
+
+#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression "Setting up source files..."
 
-ynh_setup_source --dest_dir="$install_dir/sources"
-ynh_setup_source --source_id="dotnet" --dest_dir="$install_dir/dotnet"
-mkdir -p "$install_dir/app"
-RID="linux-$YNH_ARCH"
-"$install_dir/dotnet/dotnet" publish "$install_dir/sources/src/FediProfile/FediProfile.csproj" -c Release -o "$install_dir/app" -r "$RID"
+ynh_setup_source --dest_dir="$install_dir"
+pushd "$install_dir/fediprofile/src/FediProfile"
+    dotnet run
+popd
 
 #=================================================
 # SYSTEM CONFIGURATION
