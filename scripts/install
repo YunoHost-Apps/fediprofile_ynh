@@ -12,7 +12,7 @@ source /usr/share/yunohost/helpers
 #=================================================
 ynh_script_progression "Installing dotnet SDK via bash script..."
 ynh_setup_source --dest_dir="$install_dir" --source_id="dotnet"
-pushd "$install_dir"
+pushd "$install_dir/dotnet"
     ls
     chmod +x dotnet-install.sh
     ./dotnet-install.sh --channel 9.0
