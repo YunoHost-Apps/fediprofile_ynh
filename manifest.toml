@@ -51,7 +51,7 @@ ram.runtime = "150M"
     autoupdate.needs_manual_tweaks = true
 
     [resources.sources.dotnet]
-    url = "https://dot.net/v1/dotnet-install.sh"
+    url = "https://builds.dotnet.microsoft.com/dotnet/scripts/v1/dotnet-install.sh"
     sha256 = "102a6849303713f15462bb28eb10593bf874bbeec17122e0522f10a3b57ce442"
     format = "bash"
     extract = false
