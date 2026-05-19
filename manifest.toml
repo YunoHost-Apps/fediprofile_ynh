@@ -53,6 +53,10 @@ ram.runtime = "150M"
     autoupdate.asset = "tarball"
     autoupdate.needs_manual_tweaks = true
 
+    [resources.sources.dotnet]
+    url = "https://dot.net/v1/dotnet-install.sh"
+    sha256 = "102a6849303713f15462bb28eb10593bf874bbeec17122e0522f10a3b57ce442"
+
     [resources.system_user]
 
     [resources.install_dir]
